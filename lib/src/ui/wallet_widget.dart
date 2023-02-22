@@ -1,9 +1,25 @@
 part of fonepay_flutter;
 
+// Holds FonePay page's content widget
+class FonePayPageContent {
+  /// Page appbar
+  final AppBar? appBar;
+
+  /// Page custom loader
+  final Widget? progressLoader;
+
+  FonePayPageContent({this.appBar, this.progressLoader});
+}
+
 class FonePayPage extends StatefulWidget {
+  /// The FonePayConfig configuration object.
   final FonePayConfig fonePayConfig;
 
-  const FonePayPage(this.fonePayConfig, {Key? key}) : super(key: key);
+  final FonePayPageContent? content;
+
+  /// FonePayConfig page's content widget
+  const FonePayPage(this.fonePayConfig, {this.content, Key? key})
+      : super(key: key);
 
   @override
   State<FonePayPage> createState() => _FonePayPageState();
@@ -11,10 +27,16 @@ class FonePayPage extends StatefulWidget {
 
 class _FonePayPageState extends State<FonePayPage> {
   late FonePayConfig fonePayConfig;
+
+  /// Generate the URLRequest object from the FonePay configuration parameters.
   late URLRequest paymentRequest;
+
+  /// FonePayPage page's content widget
+  late final FonePayPageContent? content;
 
   @override
   void initState() {
+    content = widget.content;
     fonePayConfig = widget.fonePayConfig;
     paymentRequest = getURLRequest();
     super.initState();
@@ -34,6 +56,7 @@ class _FonePayPageState extends State<FonePayPage> {
         allowsInlineMediaPlayback: true,
       ));
 
+  // Generates the URLRequest object for the FonePay payment page.
   URLRequest getURLRequest() {
     var url =
         "${fonePayConfig.serverUrl}PID=${fonePayConfig.pid}&MD=${fonePayConfig.md}&AMT=${fonePayConfig.amt}&CRN=${fonePayConfig.crn}&DT=${fonePayConfig.dt}&R1=${fonePayConfig.r1}&R2=${fonePayConfig.r2}&DV=${fonePayConfig.dv}&RU=${fonePayConfig.ru}&PRN=${fonePayConfig.prn}";
@@ -44,10 +67,11 @@ class _FonePayPageState extends State<FonePayPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.red,
-        title: const Text("Pay Via Fonepay"),
-      ),
+      appBar: content?.appBar ??
+          AppBar(
+            backgroundColor: Colors.red,
+            title: const Text("Pay Via FonePay"),
+          ),
       body: Stack(
         children: [
           InAppWebView(
@@ -105,9 +129,10 @@ class _FonePayPageState extends State<FonePayPage> {
             onConsoleMessage: (controller, consoleMessage) {},
           ),
           if (_isLoading)
-            const Center(
-              child: CircularProgressIndicator(),
-            ),
+            content?.progressLoader ??
+                const Center(
+                  child: CircularProgressIndicator(),
+                ),
         ],
       ),
     );

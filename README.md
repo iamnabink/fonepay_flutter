@@ -119,6 +119,42 @@ final config = FonePayConfig.dev(
 
 # APIs
 
+## Class : FonePay
+
+The `FonePay` provides a way to initialize FonePay payment using a custom button or a custom UI. Here's an example:
+
+### Methods
+
+#### `init({required BuildContext context,required FonePayConfig fonePayConfig,FonePayPageContent? pageContent})`
+
+Initializes payment method
+
+```dart
+final result = await FonePay.i.init(
+context: context,
+fonePayConfig: config,
+pageContent: FonePayPageContent(
+appBar: AppBar(
+title: Text('FonePay Payment'),
+),
+progressLoader: CircularProgressIndicator(),
+),
+);
+```
+
+## Class : FonePayPageContent
+The `FonePayPageContent` class provides options for customizing the FonePay payment screen. You can add an app bar and a custom loader to the payment screen. Here's an example:
+
+```
+FonePayPageContent(
+  appBar: AppBar(
+    title: Text('FonePay Payment'),
+  ),
+  progressLoader: CircularProgressIndicator(),
+);
+
+```
+
 ## Class: FonePayConfig
 
 The `FonePayConfig` class provides configuration options for FonePay payments.
@@ -138,13 +174,13 @@ The `FonePayConfig` class provides configuration options for FonePay payments.
 - `md`: Payment mode, defaults to "P".
 - `dv`: SHA512 hashed value, generated using the secure hash calculation method described below.
 
-## Methods
+### Methods
 
-### FonePayConfig.live
+#### FonePayConfig.live
 
 Initializes a configuration for FonePay live payments.
 
-#### Parameters
+### Parameters
 
 - `pid` (required): Live Merchant Code, defined by FonePay system.
 - `ru` (required): Live - Return Url where FonePay system notifies payment information to merchant site.
@@ -157,10 +193,9 @@ Initializes a configuration for FonePay live payments.
 - `r2`: Additional information. Defaults to "N/A".
 - `md`: Payment mode. Defaults to "P".
 
-#### Example
+### Example
 
 ```dart
-
 final config = FonePayConfig.live(
   pid: 'liveMerchantCode',
   ru: 'https://example.com/fonepay/return',
@@ -176,7 +211,7 @@ final config = FonePayConfig.live(
 
 Initializes a configuration for FonePay development stage.
 
-#### Parameters
+### Parameters
 
 - `ru` (required): Live - Return Url where FonePay system notifies payment information to merchant site.
 - `prn` (required): Product Reference Number, need to be sent by the merchant.
@@ -187,7 +222,7 @@ Initializes a configuration for FonePay development stage.
 - `r2`: Additional information. Defaults to "N/A".
 - `md`: Payment mode. Defaults to "P".
 
-#### Example
+### Example
 
 ```dart
 
@@ -251,6 +286,39 @@ Class providing the main interface for the FonePay payment integration.
 - `init(BuildContext context, FonePayConfig e)`: Initializes the FonePayConfig payment gateway with the given
   configuration.
 
+## FonePayButton
+
+The `FonePayButton` class is a `StatelessWidget` that represents a button that initiates a FonePay payment. It takes several parameters to configure the button and initiate the payment.
+
+### Parameters
+
+- `width` (optional): The width of the button.
+- `height` (optional): The height of the button.
+- `onSuccess` (required): A callback function that will be called when the payment is successful. It takes a `FonePayResponse` object as its parameter.
+- `onFailure` (required): A callback function that will be called when the payment fails. It takes a failure message as its parameter.
+- `paymentConfig` (required): A `FonePayConfig` object that contains the configuration for the FonePay payment.
+- `radius` (optional): The border radius of the button.
+- `widget` (optional): A widget that will be displayed instead of the button title. This can be used to display an icon or a custom widget.
+- `title` (optional): The title of the button. The default value is "Pay with FonePay".
+- `textStyle` (optional): The text style of the button title.
+- `style` (optional): The `ButtonStyle` of the button.
+
+### Example Usage
+
+```
+FonePayButton(
+    paymentConfig: FonePayConfig(),
+    onSuccess: (response) {
+        // Handle successful payment
+        print('Payment successful! Response: ${response.toJson()}');
+    },
+    onFailure: (message) {
+        // Handle failed payment
+        print('Payment failed. Message: $message');
+    },
+)
+```
+
 
 ## Class: FonePayUtils
 
@@ -300,7 +368,8 @@ Here are some screenshots of the FonePay Payment Gateway integrated into a ecomm
 
 ## Run the example app
 
-- Navigate to the example folder `cd example`
+- Navigate to the [example](https://github.com/iamnabink/fonepay_flutter/tree/master/lib) folder 
+- `cd example`
 - Install the dependencies
     - `flutter pub get`
 - Set up configuration `FonePayConfig.live()` or directly run with just `FonePayConfig.dev()` in dev

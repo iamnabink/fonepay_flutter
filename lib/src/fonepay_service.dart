@@ -7,11 +7,16 @@ class _FonePayService {
 
   Future<FonePayPaymentResult> init(
       {required BuildContext context,
-      required FonePayConfig fonePayConfig}) async {
+      required FonePayConfig fonePayConfig,
+      FonePayPageContent? pageContent}) async {
     try {
       final result = await Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => FonePayPage(fonePayConfig)),
+        MaterialPageRoute(
+            builder: (context) => FonePayPage(
+                  fonePayConfig,
+                  content: pageContent,
+                )),
       );
       // Wait for the user to return from the fonePay payment screen before closing any dialogs
       // This delay should give enough time for the success/failure dialog (if any) to appear and prevent it from closing prematurely.
@@ -38,12 +43,12 @@ class FonePay {
   static FonePay getInstance() => FonePay._();
 
   /// like webview, native app, or a dialog.
-  Future<FonePayPaymentResult> init({
-    required BuildContext context,
-    required FonePayConfig fonePayConfig,
-  }) =>
+  Future<FonePayPaymentResult> init(
+          {required BuildContext context,
+          required FonePayConfig fonePayConfig,
+          FonePayPageContent? pageContent}) =>
       _payment.init(
-        context: context,
-        fonePayConfig: fonePayConfig,
-      );
+          context: context,
+          fonePayConfig: fonePayConfig,
+          pageContent: pageContent);
 }

@@ -47,40 +47,78 @@ class _FonePayAppState extends State<FonePayApp> {
           mainAxisSize: MainAxisSize.min,
           children: [
             /// Example Use case - 1
-            TextButton(
-              onPressed: () async {
-                final result = await FonePay.i.init(
-                    context: context,
-                    fonePayConfig: FonePayConfig.dev(
-                      amt: 10.0,
-                      r2: 'https://www.marvel.com/hello',
-                      ru: 'https://www.marvel.com/hello',
-                      r1: 'qwq',
-                      prn: 'PD-2-${FonePayUtils.generateRandomString(len: 2)}',
-                    ));
-                if (result.hasData) {
-                  final response = result.data!;
-                  setState(() {
-                    refId = response.uid!;
-                  });
-                  if (kDebugMode) {
-                    print(response.toJson());
-                  }
-                } else {
-                  setState(() {
-                    hasError = result.error!;
-                  });
-                  if (kDebugMode) {
-                    print(result.error);
-                  }
+            FonePayButton(
+              paymentConfig: FonePayConfig.dev(
+                amt: 10.0,
+                r2: 'https://www.marvel.com/hello',
+                ru: 'https://www.marvel.com/hello',
+                r1: 'qwq',
+                prn: 'PD-2-${FonePayUtils.generateRandomString(len: 2)}',
+              ),
+              width: 100,
+              onFailure: (result) async {
+                setState(() {
+                  refId = '';
+                  hasError = result;
+                });
+                if (kDebugMode) {
+                  print(result);
                 }
               },
-              child: const Text('Pay with FonePay'),
+              onSuccess: (result) async {
+                setState(() {
+                  hasError = '';
+                  refId = result.uid!;
+                });
+                if (kDebugMode) {
+                  print(result.toJson());
+                }
+              },
             ),
+
+            /// Example Use case - 2
+            // TextButton(
+            //   onPressed: () async {
+            //     final result = await FonePay.i.init(
+            //         context: context,
+            //         fonePayConfig: FonePayConfig.dev(
+            //           amt: 10.0,
+            //           r2: 'https://www.marvel.com/hello',
+            //           ru: 'https://www.marvel.com/hello',
+            //           r1: 'qwq',
+            //           prn: 'PD-2-${FonePayUtils.generateRandomString(len: 2)}',
+            //         ));
+            //     if (result.hasData) {
+            //       final response = result.data!;
+            //       setState(() {
+            //         hasError = '';
+            //         refId = response.uid!;
+            //       });
+            //       if (kDebugMode) {
+            //         print(response.toJson());
+            //       }
+            //     } else {
+            //       setState(() {
+            //         refId = '';
+            //         hasError = result.error!;
+            //       });
+            //       if (kDebugMode) {
+            //         print(result.error);
+            //       }
+            //     }
+            //   },
+            //   child: const Text('Pay with FonePay'),
+            // ),
             if (refId.isNotEmpty)
-              Text('Console: Payment Success, Ref Id: $refId'),
+              Center(
+                  child: Text('Console: Payment Success, Ref Id: $refId',
+                      textAlign: TextAlign.center)),
             if (hasError.isNotEmpty)
-              Text('Console: Payment Failed, Message: $hasError'),
+              Center(
+                  child: Text(
+                'Console: Payment Failed, Message: $hasError',
+                textAlign: TextAlign.center,
+              )),
           ],
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.

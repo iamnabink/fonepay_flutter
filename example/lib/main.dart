@@ -68,7 +68,7 @@ class _FonePayAppState extends State<FonePayApp> {
                   }
                 } else {
                   setState(() {
-                    refId = result.error!;
+                    hasError = result.error!;
                   });
                   if (kDebugMode) {
                     print(result.error);

@@ -1,4 +1,4 @@
-# FonePay Flutter [![Share on Twitter](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Flutter%20InAppBrowser%20plugin!&url=https://github.com/iamnabink/fonepay_flutter&hashtags=flutter,flutterio,dart,wallet,fonepay,paymentgateway) [![Share on Facebook](https://img.shields.io/badge/share-facebook-blue.svg?longCache=true&style=flat&colorB=%234267b2)](https://www.facebook.com/sharer/sharer.php?u=https%3A//github.com/iamnabink/fonepay_flutter)
+# FonePay Flutter [![Share on Twitter](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Flutter%20FonePayPayment%20plugin!&url=https://github.com/iamnabink/fonepay_flutter&hashtags=flutter,flutterio,dart,wallet,fonepay,paymentgateway) [![Share on Facebook](https://img.shields.io/badge/share-facebook-blue.svg?longCache=true&style=flat&colorB=%234267b2)](https://www.facebook.com/sharer/sharer.php?u=https%3A//github.com/iamnabink/fonepay_flutter)
 
 [![Pub Version](https://img.shields.io/pub/v/fonepay_flutter.svg)](https://pub.dev/packages/fonepay_flutter)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -23,13 +23,23 @@ package for providing such a useful package.
 - Pure Dart code
 - Simple to use
 
+
 ## Requirements
 
-- Dart sdk: ">=2.16.0 <3.0.0"
-- Flutter: ">=2.0.0"
-- Android: `minSdkVersion 19` and add support for `androidx` (
-  see [AndroidX Migration](https://flutter.dev/docs/development/androidx-migration) to migrate an existing app)
-- iOS 9.0+: `--ios-language swift`, Xcode version `>= 14`
+* Android: `minSdkVersion 17` and add support for `androidx` (see [AndroidX Migration](https://flutter.dev/docs/development/androidx-migration))
+* iOS: `--ios-language swift`, Xcode version `>= 11`
+
+## Setup
+
+### iOS
+No Configuration Needed
+
+For more info, [see here](https://pub.dev/packages/flutter_inappwebview#important-note-for-ios)
+
+### Android
+Set `minSdkVersion` of your `android/app/build.gradle` file to at least 17.
+
+For more info, [see here](https://pub.dev/packages/flutter_inappwebview#important-note-for-android)
 
 # Usage
 

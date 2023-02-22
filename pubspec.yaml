@@ -7,13 +7,14 @@ homepage: https://github.com/iamnabink/fonepay_flutter
 
 environment:
   sdk: ">=2.16.2 <3.0.0"
-  flutter: ">=2.0.0"
+  flutter: ">=2.5.0"
 
 dependencies:
   flutter:
     sdk: flutter
   flutter_inappwebview: ^5.4.4+3 # 5.7.2+3A Flutter plugin that allows you to add an inline webview, to use an headless webview, and to open an in-app browser window.
   crypto: ^3.0.2  #Implementations of SHA, MD5, and HMAC cryptographic functions
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -46,7 +46,7 @@ class _FonePayAppState extends State<FonePayApp> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            /// Example Use case - 2
+            /// Example Use case - 1
             TextButton(
               onPressed: () async {
                 final result = await FonePay.i.init(

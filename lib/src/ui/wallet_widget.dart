@@ -3,7 +3,7 @@ part of fonepay_flutter;
 class FonePayPage extends StatefulWidget {
   final FonePayConfig fonePayConfig;
 
-  const FonePayPage(this.fonePayConfig);
+  const FonePayPage(this.fonePayConfig, {Key? key}) : super(key: key);
 
   @override
   State<FonePayPage> createState() => _FonePayPageState();

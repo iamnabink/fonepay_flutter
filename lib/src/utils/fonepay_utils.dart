@@ -1,6 +1,6 @@
 part of fonepay_flutter;
 
-class FonePayUtils{
+class FonePayUtils {
   /// format date time in :MM/dd/yyyy
   /// eg:06/27/2018
 
@@ -10,6 +10,7 @@ class FonePayUtils{
     String year = date.year.toString();
     return '$month/$day/$year';
   }
+
   /// generate random string based on passed length //default = 6
   static String generateRandomString({int? len}) {
     var r = Random();

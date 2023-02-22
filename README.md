@@ -3,17 +3,18 @@
 [![Pub Version](https://img.shields.io/pub/v/fonepay_flutter.svg)](https://pub.dev/packages/fonepay_flutter)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-An un-official Flutter plugin for FonePay Payment Gateway. With this plugin, you can easily integrate
-FonePay Payment Gateway into your Flutter app and start accepting payments from your customers.
-Whether you're building an eCommerce app or any other type of app that requires payments, this
-plugin makes the integration process simple and straightforward.
+An un-official Flutter plugin for FonePay Payment Gateway. With this plugin, you can easily
+integrate FonePay Payment Gateway into your Flutter app and start accepting payments from your
+customers. Whether you're building an eCommerce app or any other type of app that requires payments,
+this plugin makes the integration process simple and straightforward.
 
 ![Cover Image](https://github.com/iamnabink/fonepay_flutter/raw/master/screenshots/cover.png)
 
 # Note
 
-This package doesn't use any plugin or native APIs for payment initialization. Instead, it is based on the Flutter
-InAppWebView package. A shoutout to the developer of [InAppWebView](https://pub.dev/packages/flutter_inappwebview)
+This package doesn't use any plugin or native APIs for payment initialization. Instead, it is based
+on the Flutter InAppWebView package. A shoutout to the developer
+of [InAppWebView](https://pub.dev/packages/flutter_inappwebview)
 package for providing such a useful package.
 
 ## Features
@@ -23,15 +24,16 @@ package for providing such a useful package.
 - Pure Dart code
 - Simple to use
 
-
 ## Requirements
 
-* Android: `minSdkVersion 17` and add support for `androidx` (see [AndroidX Migration](https://flutter.dev/docs/development/androidx-migration))
+* Android: `minSdkVersion 17` and add support for `androidx` (
+  see [AndroidX Migration](https://flutter.dev/docs/development/androidx-migration))
 * iOS: `--ios-language swift`, Xcode version `>= 11`
 
 ## Setup
 
 ### iOS
+
 | Platform | Configuration                                                                                                                                                                   |
 |----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | iOS      | No Configuration Needed. For more info, [see here](https://pub.dev/packages/flutter_inappwebview#important-note-for-ios)                                                        |
@@ -52,7 +54,8 @@ dependencies:
 
 3. Create an instance of `FonePayConfig` with your payment information:
 
-The `FonePayConfig` class holds the configuration details for the payment gateway. Pass an instance of
+The `FonePayConfig` class holds the configuration details for the payment gateway. Pass an instance
+of
 `FonePayConfig` to the init() method of the `FonePay` class to initiate the payment process.
 
 ```dart
@@ -81,8 +84,8 @@ final result = await FonePay.i.init(
 
 After the payment is completed or cancelled by the user, the plugin returns an instance of
 FonePayPaymentResult. If the payment was successful, hasData will be true and you can access the
-FonePayResponse object using data. If the payment was unsuccessful, hasError will be true and
-you can access the error message using error.
+FonePayResponse object using data. If the payment was unsuccessful, hasError will be true and you
+can access the error message using error.
 
 ```
 if (result.hasData) {
@@ -117,29 +120,42 @@ final config = FonePayConfig.dev(
 
 ## Class : FonePay
 
-The `FonePay` provides a way to initialize FonePay payment using a custom button or a custom UI. Here's an example:
+The `FonePay` provides a way to initialize FonePay payment using a custom button or a custom UI.
+Here's an example:
 
 ### Methods
 
-#### `init({required BuildContext context,required FonePayConfig fonePayConfig,FonePayPageContent? pageContent})`
+ ```
+ init({required BuildContext context,required FonePayConfig fonePayConfig,FonePayPageContent? pageContent})
+ ```
 
 Initializes payment method
 
 ```dart
-final result = await FonePay.i.init(
-context: context,
-fonePayConfig: config,
-pageContent: FonePayPageContent(
-appBar: AppBar(
-title: Text('FonePay Payment'),
-),
-progressLoader: CircularProgressIndicator(),
-),
+
+final result = await
+FonePay.i.init(context: context,fonePayConfig: config,pageContent: FonePayPageContent
+(
+appBar: AppBar
+(
+title: Text
+('FonePay Payment
+'
+)
+,
+)
+,
+progressLoader: CircularProgressIndicator
+(
+),)
+,
 );
 ```
 
 ## Class : FonePayPageContent
-The `FonePayPageContent` class provides options for customizing the FonePay payment screen. You can add an app bar and a custom loader to the payment screen. Here's an example:
+
+The `FonePayPageContent` class provides options for customizing the FonePay payment screen. You can
+add an app bar and a custom loader to the payment screen. Here's an example:
 
 ```
 FonePayPageContent(
@@ -157,15 +173,19 @@ The `FonePayConfig` class provides configuration options for FonePay payments.
 
 ### Properties
 
-- `ru` (required): Live - Return Url where FonePay system notifies payment information to merchant site.
-- `serverUrl`: FonePay prod server URL. Defaults to "https://clientapi.fonepay.com/api/merchantRequest?".
+- `ru` (required): Live - Return Url where FonePay system notifies payment information to merchant
+  site.
+- `serverUrl`: FonePay prod server URL. Defaults
+  to "https://clientapi.fonepay.com/api/merchantRequest?".
 - `sk` (required): Secret key for the FonePay account.
 - `pid`: Live Merchant Code, defined by FonePay system. Defaults to "fonepay123".
-- `prn` (required): Product Reference Number, need to be sent by the merchant. Must be between 3 and 25 characters.
+- `prn` (required): Product Reference Number, need to be sent by the merchant. Must be between 3 and
+  25 characters.
 - `amt` (required): Payable amount, specified as a double with a maximum of 18 digits.
 - `crn`: Currency code. Defaults to "NPR".
 - `dt`: Payment date in MM/dd/yyyy format. Defaults to the current date.
-- `r1` (required): Payment details that identify what the payment was for (e.g., receipt ID or payment description).
+- `r1` (required): Payment details that identify what the payment was for (e.g., receipt ID or
+  payment description).
 - `r2`: Additional information, defaults to "N/A".
 - `md`: Payment mode, defaults to "P".
 - `dv`: SHA512 hashed value, generated using the secure hash calculation method described below.
@@ -179,7 +199,8 @@ Initializes a configuration for FonePay live payments.
 ### Parameters
 
 - `pid` (required): Live Merchant Code, defined by FonePay system.
-- `ru` (required): Live - Return Url where FonePay system notifies payment information to merchant site.
+- `ru` (required): Live - Return Url where FonePay system notifies payment information to merchant
+  site.
 - `prn` (required): Product Reference Number, need to be sent by the merchant.
 - `amt` (required): Payable amount.
 - `crn`: Currency code. Defaults to "NPR".
@@ -192,6 +213,7 @@ Initializes a configuration for FonePay live payments.
 ### Example
 
 ```dart
+
 final config = FonePayConfig.live(
   pid: 'liveMerchantCode',
   ru: 'https://example.com/fonepay/return',
@@ -209,7 +231,8 @@ Initializes a configuration for FonePay development stage.
 
 ### Parameters
 
-- `ru` (required): Live - Return Url where FonePay system notifies payment information to merchant site.
+- `ru` (required): Live - Return Url where FonePay system notifies payment information to merchant
+  site.
 - `prn` (required): Product Reference Number, need to be sent by the merchant.
 - `amt` (required): Payable amount.
 - `crn`: Currency code. Defaults to "NPR".
@@ -275,17 +298,22 @@ Class representing the result of a payment transaction.
 
 ## Class: FonePayButton
 
-The `FonePayButton` class is a `StatelessWidget` that represents a button that initiates a FonePay payment. It takes several parameters to configure the button and initiate the payment.
+The `FonePayButton` class is a `StatelessWidget` that represents a button that initiates a FonePay
+payment. It takes several parameters to configure the button and initiate the payment.
 
 ### Parameters
 
 - `width` (optional): The width of the button.
 - `height` (optional): The height of the button.
-- `onSuccess` (required): A callback function that will be called when the payment is successful. It takes a `FonePayResponse` object as its parameter.
-- `onFailure` (required): A callback function that will be called when the payment fails. It takes a failure message as its parameter.
-- `paymentConfig` (required): A `FonePayConfig` object that contains the configuration for the FonePay payment.
+- `onSuccess` (required): A callback function that will be called when the payment is successful. It
+  takes a `FonePayResponse` object as its parameter.
+- `onFailure` (required): A callback function that will be called when the payment fails. It takes a
+  failure message as its parameter.
+- `paymentConfig` (required): A `FonePayConfig` object that contains the configuration for the
+  FonePay payment.
 - `radius` (optional): The border radius of the button.
-- `widget` (optional): A widget that will be displayed instead of the button title. This can be used to display an icon or a custom widget.
+- `widget` (optional): A widget that will be displayed instead of the button title. This can be used
+  to display an icon or a custom widget.
 - `title` (optional): The title of the button. The default value is "Pay with FonePay".
 - `textStyle` (optional): The text style of the button title.
 - `style` (optional): The `ButtonStyle` of the button.
@@ -306,7 +334,6 @@ FonePayButton(
 )
 ```
 
-
 ## Class: FonePayUtils
 
 The `FonePayUtils` class provides utility functions for FonePay integration.
@@ -314,22 +341,36 @@ The `FonePayUtils` class provides utility functions for FonePay integration.
 ### Static Method: formatDate
 
 ```dart
-static String formatDate(DateTime date)
+static String formatDate
+(
+
+DateTime date
+)
 ```
 
 Returns the formatted date string in the format of MM/dd/yyyy.
 
 `date` (required): The `DateTime` object to be formatted.
+
 ### Method: generateRandomString
 
 ```dart
-String generateRandomString({int? len})
+String generateRandomString
+(
+{
+int
+?
+len
+}
+)
 
 ```
+
 * Generates a random string of specified length or a default length of 6 if not specified.
 
-`len` (optional): The length of the random string to be generated. If not specified, the default length of 6 will be used.
-Note: To prevent payment request failure due to duplicate PRN number in `FonePayConfig`, it is recommended to generate a unique `PRN` number by utilizing this method.
+`len` (optional): The length of the random string to be generated. If not specified, the default
+length of 6 will be used. Note: To prevent payment request failure due to duplicate PRN number
+in `FonePayConfig`, it is recommended to generate a unique `PRN` number by utilizing this method.
 
 ## Dev Testing Information
 
@@ -340,7 +381,8 @@ To access the development environment, use the following credentials:
 - Password: [anything random, like 1212122]
 - OTP: [anything random, like 1212122]
 
-Please note that these credentials are for testing purposes only and should not be used in production.
+Please note that these credentials are for testing purposes only and should not be used in
+production.
 
 ## Screenshots
 
@@ -355,7 +397,7 @@ Here are some screenshots of the FonePay Payment Gateway integrated into a ecomm
 
 ## Run the example app
 
-- Navigate to the [example](https://github.com/iamnabink/fonepay_flutter/tree/master/lib) folder 
+- Navigate to the [example](https://github.com/iamnabink/fonepay_flutter/tree/master/lib) folder
 - `cd example`
 - Install the dependencies
     - `flutter pub get`

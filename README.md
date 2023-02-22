@@ -8,7 +8,7 @@ FonePay Payment Gateway into your Flutter app and start accepting payments from 
 Whether you're building an eCommerce app or any other type of app that requires payments, this
 plugin makes the integration process simple and straightforward.
 
-![Cover Image](screenshots/cover.png)
+![Cover Image](https://github.com/iamnabink/fonepay_flutter/raw/master/screenshots/cover.png)
 
 # Note
 
@@ -283,8 +283,8 @@ Here are some screenshots of the FonePay Payment Gateway integrated into a ecomm
 
 <table>
   <tr>
-    <td><img src="screenshots/order_screen.png" alt="Example Order Screen" width="400"/></td>
-    <td><img src="screenshots/payment_screen.png" alt="Payment Screen" width="400"/></td>
+    <td><img src="https://github.com/iamnabink/fonepay_flutter/raw/master/screenshots/order_screen.png" alt="Example Order Screen" width="400"/></td>
+    <td><img src="https://github.com/iamnabink/fonepay_flutter/raw/master/screenshots/payment_screen.png" alt="Payment Screen" width="400"/></td>
   </tr>
 </table>
 

@@ -1,6 +1,6 @@
 name: fonepay_flutter
 description: An un-official Flutter plugin for Fonepay Payment Gateway, integrate with ease and without any hassle.
-version: 1.1.0
+version: 1.1.1
 license: MIT
 issue_tracker: https://github.com/iamnabink/fonepay_flutter/issues
 homepage: https://github.com/iamnabink/fonepay_flutter

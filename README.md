@@ -32,8 +32,6 @@ package for providing such a useful package.
 
 ## Setup
 
-### iOS
-
 | Platform | Configuration                                                                                                                                                                   |
 |----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | iOS      | No Configuration Needed. For more info, [see here](https://pub.dev/packages/flutter_inappwebview#important-note-for-ios)                                                        |

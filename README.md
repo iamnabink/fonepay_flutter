@@ -32,14 +32,10 @@ package for providing such a useful package.
 ## Setup
 
 ### iOS
-No Configuration Needed
-
-For more info, [see here](https://pub.dev/packages/flutter_inappwebview#important-note-for-ios)
-
-### Android
-Set `minSdkVersion` of your `android/app/build.gradle` file to at least 17.
-
-For more info, [see here](https://pub.dev/packages/flutter_inappwebview#important-note-for-android)
+| Platform | Configuration                                                                                                                                                                   |
+|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| iOS      | No Configuration Needed. For more info, [see here](https://pub.dev/packages/flutter_inappwebview#important-note-for-ios)                                                        |
+| Android  | Set `minSdkVersion` of your `android/app/build.gradle` file to at least 17. For more info, [see here](https://pub.dev/packages/flutter_inappwebview#important-note-for-android) |
 
 # Usage
 
@@ -235,7 +231,7 @@ final config = FonePayConfig.dev(
 );
 ```
 
-## FonePayResponse
+## Class: FonePayResponse
 
 Represents a response from the FonePay API.
 
@@ -277,16 +273,7 @@ Class representing the result of a payment transaction.
 - `hasError`: A boolean indicating whether the payment failed or was cancelled and contains a
   non-null error property.
 
-## Class: FonePay
-
-Class providing the main interface for the FonePay payment integration.
-
-### Methods
-
-- `init(BuildContext context, FonePayConfig e)`: Initializes the FonePayConfig payment gateway with the given
-  configuration.
-
-## FonePayButton
+## Class: FonePayButton
 
 The `FonePayButton` class is a `StatelessWidget` that represents a button that initiates a FonePay payment. It takes several parameters to configure the button and initiate the payment.
 

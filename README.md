@@ -130,24 +130,16 @@ Here's an example:
 Initializes payment method
 
 ```dart
+final result = await FonePay.i.init(
+                    context: context,
+                    fonePayConfig: FonePayConfig.dev(
+                      amt: 10.0,
+                      r2: 'https://www.marvel.com/hello',
+                      ru: 'https://www.marvel.com/hello',
+                      r1: 'qwq',
+                      prn: 'PD-2-${FonePayUtils.generateRandomString(len: 2)}',
+                    ));
 
-final result = await
-FonePay.i.init(context: context,fonePayConfig: config,pageContent: FonePayPageContent
-(
-appBar: AppBar
-(
-title: Text
-('FonePay Payment
-'
-)
-,
-)
-,
-progressLoader: CircularProgressIndicator
-(
-),)
-,
-);
 ```
 
 ## Class : FonePayPageContent
@@ -353,15 +345,7 @@ Returns the formatted date string in the format of MM/dd/yyyy.
 ### Method: generateRandomString
 
 ```dart
-String generateRandomString
-(
-{
-int
-?
-len
-}
-)
-
+String generateRandomString({int? len})
 ```
 
 * Generates a random string of specified length or a default length of 6 if not specified.

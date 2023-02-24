@@ -77,38 +77,38 @@ class _FonePayAppState extends State<FonePayApp> {
             ),
 
             /// Example Use case - 2
-            // TextButton(
-            //   onPressed: () async {
-            //     final result = await FonePay.i.init(
-            //         context: context,
-            //         fonePayConfig: FonePayConfig.dev(
-            //           amt: 10.0,
-            //           r2: 'https://www.marvel.com/hello',
-            //           ru: 'https://www.marvel.com/hello',
-            //           r1: 'qwq',
-            //           prn: 'PD-2-${FonePayUtils.generateRandomString(len: 2)}',
-            //         ));
-            //     if (result.hasData) {
-            //       final response = result.data!;
-            //       setState(() {
-            //         hasError = '';
-            //         refId = response.uid!;
-            //       });
-            //       if (kDebugMode) {
-            //         print(response.toJson());
-            //       }
-            //     } else {
-            //       setState(() {
-            //         refId = '';
-            //         hasError = result.error!;
-            //       });
-            //       if (kDebugMode) {
-            //         print(result.error);
-            //       }
-            //     }
-            //   },
-            //   child: const Text('Pay with FonePay'),
-            // ),
+            TextButton(
+              onPressed: () async {
+                final result = await FonePay.i.init(
+                    context: context,
+                    fonePayConfig: FonePayConfig.dev(
+                      amt: 10.0,
+                      r2: 'https://www.marvel.com/hello',
+                      ru: 'https://www.marvel.com/hello',
+                      r1: 'qwq',
+                      prn: 'PD-2-${FonePayUtils.generateRandomString(len: 2)}',
+                    ));
+                if (result.hasData) {
+                  final response = result.data!;
+                  setState(() {
+                    hasError = '';
+                    refId = response.uid!;
+                  });
+                  if (kDebugMode) {
+                    print(response.toJson());
+                  }
+                } else {
+                  setState(() {
+                    refId = '';
+                    hasError = result.error!;
+                  });
+                  if (kDebugMode) {
+                    print(result.error);
+                  }
+                }
+              },
+              child: const Text('Pay with FonePay'),
+            ),
             if (refId.isNotEmpty)
               Center(
                   child: Text('Console: Payment Success, Ref Id: $refId',

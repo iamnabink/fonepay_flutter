@@ -1,6 +1,6 @@
 name: fonepay_flutter
 description: An un-official Flutter plugin for Fonepay Payment Gateway, integrate with ease and without any hassle.
-version: 1.1.1
+version: 2.0.0
 license: MIT
 issue_tracker: https://github.com/iamnabink/fonepay_flutter/issues
 homepage: https://github.com/iamnabink/fonepay_flutter
@@ -12,13 +12,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_inappwebview: ^5.4.4+3 # 5.7.2+3A Flutter plugin that allows you to add an inline webview, to use an headless webview, and to open an in-app browser window.
+  flutter_inappwebview: ^6.1.5 # 5.7.2+3A Flutter plugin that allows you to add an inline webview, to use an headless webview, and to open an in-app browser window.
   crypto: ^3.0.2  #Implementations of SHA, MD5, and HMAC cryptographic functions
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^1.0.0
+  flutter_lints: ^6.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

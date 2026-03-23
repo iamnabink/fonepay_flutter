@@ -1,17 +1,17 @@
 PODS:
   - Flutter (1.0.0)
-  - flutter_inappwebview (0.0.1):
+  - flutter_inappwebview_ios (0.0.1):
     - Flutter
-    - flutter_inappwebview/Core (= 0.0.1)
-    - OrderedSet (~> 5.0)
-  - flutter_inappwebview/Core (0.0.1):
+    - flutter_inappwebview_ios/Core (= 0.0.1)
+    - OrderedSet (~> 6.0.3)
+  - flutter_inappwebview_ios/Core (0.0.1):
     - Flutter
-    - OrderedSet (~> 5.0)
-  - OrderedSet (5.0.0)
+    - OrderedSet (~> 6.0.3)
+  - OrderedSet (6.0.3)
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
-  - flutter_inappwebview (from `.symlinks/plugins/flutter_inappwebview/ios`)
+  - flutter_inappwebview_ios (from `.symlinks/plugins/flutter_inappwebview_ios/ios`)
 
 SPEC REPOS:
   trunk:
@@ -20,14 +20,14 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
-  flutter_inappwebview:
-    :path: ".symlinks/plugins/flutter_inappwebview/ios"
+  flutter_inappwebview_ios:
+    :path: ".symlinks/plugins/flutter_inappwebview_ios/ios"
 
 SPEC CHECKSUMS:
-  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
-  flutter_inappwebview: bfd58618f49dc62f2676de690fc6dcda1d6c3721
-  OrderedSet: aaeb196f7fef5a9edf55d89760da9176ad40b93c
+  Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
+  flutter_inappwebview_ios: b89ba3482b96fb25e00c967aae065701b66e9b99
+  OrderedSet: e539b66b644ff081c73a262d24ad552a69be3a94
 
-PODFILE CHECKSUM: ce13d36744da294d67f8e460dbb7aed7c09bd7f4
+PODFILE CHECKSUM: 30517025a2fecca2d72dac25f08abb5b9a8f1a56
 
-COCOAPODS: 1.12.0
+COCOAPODS: 1.16.2

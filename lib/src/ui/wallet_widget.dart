@@ -60,7 +60,7 @@ class _FonePayPageState extends State<FonePayPage> {
   URLRequest getURLRequest() {
     var url =
         "${fonePayConfig.serverUrl}PID=${fonePayConfig.pid}&MD=${fonePayConfig.md}&AMT=${fonePayConfig.amt}&CRN=${fonePayConfig.crn}&DT=${fonePayConfig.dt}&R1=${fonePayConfig.r1}&R2=${fonePayConfig.r2}&DV=${fonePayConfig.dv}&RU=${fonePayConfig.ru}&PRN=${fonePayConfig.prn}";
-    var urlRequest = URLRequest(url: Uri.tryParse(url));
+    var urlRequest = URLRequest(url: WebUri(url));
     return urlRequest;
   }
 
